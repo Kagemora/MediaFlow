@@ -21,18 +21,17 @@ android {
 }
 
 dependencies {
-    // ViewModel + viewModelScope — тут будет жить BaseViewModel<State, Intent, Effect>
+    // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
-    // Корутины — Flow/StateFlow внутри BaseViewModel.
-    // -android обязателен: viewModelScope использует Dispatchers.Main,
-    // а его реальная реализация лежит именно в -android, не в -core.
+    // Корутины
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
-    // Dagger — только рантайм-аннотации (@Inject, @MapKey, Provider<T>)
+    // Dagger
     implementation(libs.dagger)
 
+    // Тесты
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.turbine)
