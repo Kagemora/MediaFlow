@@ -1,0 +1,47 @@
+# ---------- Gradle ----------
+.gradle/
+**/build/
+.kotlin/
+
+# ---------- Local configuration ----------
+local.properties
+
+# ---------- Signing / credentials — NEVER commit ----------
+*.jks
+*.keystore
+keystore.properties
+key.properties
+*service-account*.json
+*.p12
+
+# ---------- Android Studio / IntelliJ ----------
+*.iml
+.idea/
+
+# ---------- Native build ----------
+.externalNativeBuild/
+.cxx/
+
+# ---------- Profiling / debugging ----------
+*.hprof
+captures/
+
+# ---------- Logs ----------
+*.log
+
+# ---------- Fastlane ----------
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+# ---------- Lint ----------
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+
+# ---------- OS ----------
+.DS_Store
+Thumbs.db

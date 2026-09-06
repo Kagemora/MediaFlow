@@ -1,0 +1,91 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+    //временно стопнул
+//    alias(libs.plugins.google.services)
+//    alias(libs.plugins.firebase.crashlytics)
+}
+
+dependencies {
+    // ---------- Compose ----------
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    // ---------- Coroutines / Serialization / Datetime ----------
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.datetime)
+
+    // ---------- Logging / Leak detection ----------
+    implementation(libs.timber)
+    debugImplementation(libs.leakcanary.android)
+
+    // ---------- Network: Retrofit + OkHttp ----------
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.kotlinx.serialization)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+
+    // ---------- DI: Dagger 2 (raw, не Hilt) ----------
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
+
+    // ---------- Room + Paging 3 (RemoteMediator) ----------
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.paging)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
+
+    // ---------- DataStore ----------
+    implementation(libs.androidx.datastore.preferences)
+
+    // ---------- WorkManager ----------
+    implementation(libs.androidx.work.runtime.ktx)
+
+    // ---------- Coil 3 ----------
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
+    // ---------- Media3 ----------
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.ui.compose)
+    implementation(libs.androidx.media3.session)
+
+    // ---------- Firebase ----------
+    //временно стопнул
+//    implementation(platform(libs.firebase.bom))
+//    implementation(libs.firebase.messaging)
+//    implementation(libs.firebase.crashlytics)
+
+    // ---------- Unit-тесты ----------
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.turbine)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.okhttp.mockwebserver)
+
+    // ---------- Инструментальные / Compose UI тесты ----------
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.mockk.android)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+}
