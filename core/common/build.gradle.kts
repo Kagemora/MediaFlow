@@ -31,6 +31,8 @@ dependencies {
     // Dagger
     implementation(libs.dagger)
 
+    implementation(libs.retrofit)
+
     // Тесты
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
