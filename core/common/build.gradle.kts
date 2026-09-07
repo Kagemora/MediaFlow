@@ -23,7 +23,7 @@ android {
 dependencies {
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-
+    implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     // Корутины
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
