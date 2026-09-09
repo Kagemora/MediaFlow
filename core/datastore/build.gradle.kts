@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -25,6 +26,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
 
     implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
 
     implementation(libs.kotlinx.coroutines.core)
 }

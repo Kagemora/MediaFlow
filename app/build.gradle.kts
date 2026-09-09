@@ -37,20 +37,21 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
 dependencies {
     // ---------- Модули проекта ----------
-    // implementation(project(":core:common"))
+    implementation(project(":core:common"))
     // implementation(project(":core:model"))
-    // implementation(project(":core:network"))
+    implementation(project(":core:network"))
     // implementation(project(":core:database"))
-    // implementation(project(":core:datastore"))
+    implementation(project(":core:datastore"))
     // implementation(project(":core:ui"))
     // implementation(project(":core:navigation"))
-    // implementation(project(":feature:auth:api"))
-    // implementation(project(":feature:auth:impl"))
+    implementation(project(":feature:auth:api"))
+    implementation(project(":feature:auth:impl"))
     // implementation(project(":feature:feed:impl"))
     // implementation(project(":feature:market:impl"))
     // implementation(project(":feature:video:impl"))
@@ -97,4 +98,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.datastore.preferences)
 }

@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -30,6 +31,7 @@ dependencies {
 
     // Dagger
     implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
 
     implementation(libs.retrofit)
 
