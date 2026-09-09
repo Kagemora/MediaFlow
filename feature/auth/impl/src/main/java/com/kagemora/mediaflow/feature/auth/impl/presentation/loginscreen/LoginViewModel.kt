@@ -37,11 +37,11 @@ class LoginViewModel @Inject constructor(
     private fun submit() {
         val current = state.value
         if (current.username.isBlank() || current.password.isBlank()) {
-            setState { copy(errorMessage = "Введите логин и пароль") }
+            sendEffect(LoginEffect.ShowError("Введите логин и пароль"))
             return
         }
         loginJob?.cancel()
-        setState { copy(isLoading = true, errorMessage = null) }
+        setState { copy(isLoading = true) }
         loginJob = viewModelScope.launch {
             when (val result = loginUseCase(state.value.username, state.value.password)) {
                 is Result.Error -> {
@@ -51,7 +51,8 @@ class LoginViewModel @Inject constructor(
                         is AppError.Server -> "Ошибка сервера: ${error.code}"
                         is AppError.Unknown -> "Что-то пошло не так"
                     }
-                    setState { copy(isLoading = false, errorMessage = message) }
+                    setState { copy(isLoading = false) }
+                    sendEffect(LoginEffect.ShowError(message))
                 }
 
                 is Result.Success<*> -> {
@@ -67,8 +68,7 @@ class LoginViewModel @Inject constructor(
 data class LoginState(
     val username: String = "",
     val password: String = "",
-    val isLoading: Boolean = false,
-    val errorMessage: String? = null
+    val isLoading: Boolean = false
 )
 
 sealed interface LoginIntent {
@@ -79,4 +79,5 @@ sealed interface LoginIntent {
 
 sealed interface LoginEffect {
     data object NavigateToFeed : LoginEffect
+    data class ShowError(val message: String) : LoginEffect
 }
