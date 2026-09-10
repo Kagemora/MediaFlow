@@ -26,9 +26,9 @@ abstract class BaseViewModel<State, Effect, Intent> : ViewModel() {
         }
     }
 
-    protected fun sendEffect(effect: () -> Effect) {
+    protected fun sendEffect(effect: Effect) {
         viewModelScope.launch {
-            _effect.send(effect())
+            _effect.send(effect)
         }
     }
 

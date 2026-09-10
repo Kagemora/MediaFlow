@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -22,8 +23,9 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":core:common"))
     implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
 
     implementation(libs.retrofit)
     implementation(libs.retrofit.kotlinx.serialization)

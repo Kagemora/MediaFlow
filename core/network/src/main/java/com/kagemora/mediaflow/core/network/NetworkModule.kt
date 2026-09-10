@@ -1,5 +1,6 @@
 package com.kagemora.mediaflow.core.network
 
+import com.kagemora.mediaflow.core.common.IsDebug
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
@@ -12,11 +13,13 @@ import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import javax.inject.Singleton
 
 @Module
-class NetworkModule(private val debug: Boolean) {
+class NetworkModule() {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(
+      @IsDebug debug: Boolean
+    ): OkHttpClient {
         val builder = OkHttpClient.Builder()
         if (debug) {
             builder.addInterceptor(HttpLoggingInterceptor().apply {

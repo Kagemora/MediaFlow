@@ -11,15 +11,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.kagemora.mediaflow.feature.auth.impl.presentation.loginscreen.LoginScreen
 import com.kagemora.mediaflow.ui.theme.MediaFlowTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val viewModelFactory = (application as MediaFlowApp).daggerComponent.viewModelFactory()
+
         setContent {
             MediaFlowTheme {
-
+                LoginScreen(
+                    viewModelFactory = viewModelFactory,
+                    onNavigateToFeed = { /* пока просто заглушка, feed ещё не готов */ }
+                )
             }
         }
     }

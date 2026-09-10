@@ -9,7 +9,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 class ViewModelFactory @Inject constructor(
-    private val defaultFactories: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<out ViewModel>>,
+    private val defaultFactories: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>,
     private val assistedFactories: @JvmSuppressWildcards Map<Class<out ViewModel>, ViewModelAssistedFactory>
 ) : ViewModelProvider.Factory {
 
